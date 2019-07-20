@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="Tab Index" id="d1">
+            <af:form id="f1">
+                <af:pageTemplate viewId="/oracle/templates/threeColumnTemplate.jspx" id="pt1">
+                    <f:facet name="center">
+                        <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth" layout="vertical">
+                            <af:panelFormLayout id="pfl1" styleClass="AFStretchWidth" rows="4" maxColumns="2">
+                                <af:inputText label="InputText1" id="it1" clientComponent="true">
+                                    <af:clientListener method="event('','::it2')" type="keyDown"/>
+                                </af:inputText>
+                                <af:selectOneChoice label="SelectOneChoice1" id="soc1" clientComponent="true">
+                                    <af:selectItem label="English" id="si1" value="en"/>
+                                    <af:selectItem label="Spanish" id="si2" value="es"/>
+                                    <af:clientListener method="event('::it2','::id1')" type="keyDown"/>
+                                </af:selectOneChoice>
+                                <af:inputText label="InputText3" id="it3" clientComponent="true">
+                                    <af:clientListener method="event('::id1','::it4')" type="keyDown"/>
+                                </af:inputText>
+                                <af:inputText label="InputText5" id="it5" clientComponent="true">
+                                    <af:clientListener method="event('::it4','::it6')" type="keyDown"/>
+                                </af:inputText>
+                                <af:inputText label="InputText2" id="it2" clientComponent="true">
+                                    <af:clientListener method="event('::it1','::soc1')" type="keyDown"/>
+                                </af:inputText>
+                                <af:inputDate label="InputDate1" id="id1" clientComponent="true">
+                                    <af:convertDateTime type="date" pattern="dd-MMM-yyyy"/>
+                                    <af:clientListener method="event('::soc1','::it3')" type="keyDown"/>
+                                </af:inputDate>
+                                <af:inputText label="InputText4" id="it4" clientComponent="true">
+                                    <af:clientListener method="event('::it3','::it5')" type="keyDown"/>
+                                </af:inputText>
+                                <af:inputText label="InputText6" id="it6" clientComponent="true">
+                                    <af:clientListener method="event('::it5','')" type="keyDown"/>
+                                </af:inputText>
+                            </af:panelFormLayout>
+                            <af:spacer width="10" height="10" id="s1"/>
+                            <af:panelGroupLayout id="pgl2" styleClass="AFStretchWidth" layout="vertical">
+                                <af:button text="Submit" id="b1"/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                    <f:facet name="header">
+                        <af:outputText value="Tab Index Demo" id="ot1" inlineStyle="margin-top: -20px;"/>
+                    </f:facet>
+                    <f:attribute name="logoShortDesc" value="Tab Index Demo"/>
+                    <f:attribute name="headerGlobalSize" value="37"/>
+                </af:pageTemplate>
+            </af:form>
+            <f:facet name="metaContainer">
+                <af:resource type="javascript" source="/resources/js/tabindex.js"/>
+            </f:facet>
+        </af:document>
+    </f:view>
+</jsp:root>
